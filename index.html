@@ -1,0 +1,1123 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<!-- Cabeçalho do site -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Alan Rocha | Engenheiro de IA e Cientista de Dados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Estilo do site -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #a777e3;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #a777e3; }
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .language-btn {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .language-btn:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .language-btn i {
+            margin-right: 8px;
+        }
+        
+        .hidden-language {
+            display: none;
+        }
+
+        /* Novo estilo para o efeito de digitação do nome */
+        .typewriter-name {
+            overflow: hidden;
+            border-right: .15em solid #a777e3;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .typing-animation {
+            animation: typing 2s steps(20, end), blink-caret .75s step-end infinite;
+        }
+
+        .blink-animation {
+            animation: blink-caret .75s step-end infinite;
+        }
+    </style>
+</head>
+
+
+<!-- Início do corpo do site -->
+<body class="bg-gray-900 text-gray-100">
+    <!-- Botão de troca de idioma -->
+    <div class="language-switcher">
+        <button id="languageBtn" class="language-btn">
+            <i class="fas fa-globe"></i>
+            <span id="currentLanguage">PT-Br</span>
+        </button>
+    </div>
+
+    <!-- Cabeçalho/Navegação -->
+    <header class="fixed w-full bg-gray-900 bg-opacity-90 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-robot text-2xl text-purple-300"></i>
+                    <span class="text-xl font-bold bg-clip-text text-transparent gradient-bg">Alan Rocha | Portfólio</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-purple-400 transition" data-pt="Início" data-en="Home">Início</a>
+                    <a href="#about" class="hover:text-purple-400 transition" data-pt="Sobre" data-en="About">Sobre</a>
+                    <a href="#skills" class="hover:text-purple-400 transition" data-pt="Habilidades" data-en="Skills">Habilidades</a>
+                    <a href="#projects" class="hover:text-purple-400 transition" data-pt="Projetos" data-en="Projects">Projetos</a>
+                    <a href="#contact" class="hover:text-purple-400 transition" data-pt="Contato" data-en="Contact">Contato</a>
+                </nav>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-20 md:py-32">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        <span class="gradient-text bg-clip-text text-transparent gradient-bg" data-pt="Olá, eu sou" data-en="Hello, I'm">Olá, eu sou</span>
+                        <br>
+                        <span id="dynamicName" class="typewriter-name" data-pt="Alan Rocha" data-en="Alan Rocha"></span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-8" data-pt="Transformando dados em insights e criando soluções inteligentes com IA." data-en="Transforming data into insights and creating intelligent solutions with AI.">
+                        Transformando dados em insights e criando soluções inteligentes com IA.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-full font-semibold transition shadow-lg" data-pt="Ver Projetos" data-en="View Projects">
+                            Ver Projetos
+                        </a>
+                        <a href="#contact" class="px-8 py-3 border border-purple-400 hover:bg-purple-900 hover:bg-opacity-30 rounded-full font-semibold transition" data-pt="Contato" data-en="Contact">
+                            Contato
+                        </a>
+                    </div>
+                </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <div class="relative">
+                         <!-- Fundo circular maior -->
+                            <div class="w-80 h-80 md:w-96 md:h-96 rounded-full gradient-bg opacity-20 absolute -z-10 top-0 left-0"></div>
+                            <!-- Imagem maior -->
+                        <img src="assets/img_perfil.jpeg" alt="Cientista de Dados" class="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover border-4 border-purple-500 shadow-xl">
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </section>
+
+<!-- Seção Sobre -->
+<section id="about" class="py-20 bg-gray-800">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h1
+        class="text-4xl md:text-5xl font-bold mb-4"
+        data-pt="Sobre Mim"
+        data-en="About Me"
+      >
+        Sobre Mim
+      </h1>
+      <div class="w-24 h-1 gradient-bg mx-auto"></div>
+    </div>
+    <div class="flex flex-col md:flex-row items-center">
+      <!-- Imagem Maior -->
+      <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+        <img
+          src="assets/img_perfil.jpeg"
+          alt="Sobre mim"
+          class="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover border-4 border-purple-500 shadow-lg"
+        >
+      </div>
+      <!-- Texto Maior -->
+      <div class="md:w-2/3 md:pl-12">
+        <h3
+          class="text-3xl md:text-4xl font-semibold mb-6"
+          data-pt="Engenheiro, Cientista de Dados & Desenvolvedor IA"
+          data-en="Engineer, Data Scientist & AI Developer"
+        >
+          Engenheiro, Cientista de Dados & Desenvolvedor IA
+        </h3>
+        <p
+          class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed"
+          data-pt="Sou doutorando em Sinais e Sistemas pelo Programa de Pós-graduação em Engenharia de Teleinformática da Universidade Federal do Ceará (PPGETI/UFC), com foco em IA, Ciência de Dados, Processamento de sinais e imagens. Tenho Mestrado em Algoritmos e Computação Distribuída (PPGEEC/UFC), MBA em Data Science & Analytics (USP/ESALQ) e pós-graduação em IA e Machine Learning (UNOPAR). Bacharel em Engenharia Elétrica com ênfase em Computação (UFC) e técnico em Telecomunicações pelo IFCE, reúno sólida expertise em Machine Learning, Deep Learning, Ciência de Dados e Reconhecimento de padrões. Apaixonado por transformar dados complexos em soluções práticas, busco sempre inovar e agregar valor a projetos de alto impacto."
+          data-en="I am a PhD candidate in Signals and Systems at the Graduate Program in Teleinformatics Engineering of the Federal University of Ceará (PPGETI/UFC), with a focus on AI, Data Science, and signal and image processing. I hold an M.Sc. in Algorithms and Distributed Computing (PPGEEC/UFC), an MBA in Data Science & Analytics (USP/ESALQ), and a postgraduate degree in AI and Machine Learning (UNOPAR). With a B.Eng. in Electrical Engineering (Computing emphasis) from UFC and a Technical High School diploma in Telecommunications from IFCE, I bring solid expertise in Machine Learning, Deep Learning, Data Science, and Pattern Recognition. Passionate about turning complex data into practical solutions, I continually strive to innovate and add value to high-impact projects."
+        >
+          Sou doutorando em Sinais e Sistemas pelo Programa de Pós-graduação em Engenharia de Teleinformática da Universidade Federal do Ceará (PPGETI/UFC), com foco em IA, Ciência de Dados, Processamento de sinais e imagens. Tenho Mestrado em Algoritmos e Computação Distribuída (PPGEEC/UFC), MBA em Data Science & Analytics (USP/ESALQ) e pós-graduação em IA e Machine Learning (UNOPAR). Bacharel em Engenharia Elétrica com ênfase em Computação (UFC) e técnico em Telecomunicações pelo IFCE, reúno sólida expertise em Machine Learning, Deep Learning, Ciência de Dados e Reconhecimento de padrões. Apaixonado por transformar dados complexos em soluções práticas, busco sempre inovar e agregar valor a projetos de alto impacto.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <p class="mb-2">
+              <span class="font-semibold text-purple-400" data-pt="Nome:" data-en="Name:">Nome:</span>
+              Alan Rocha
+            </p>
+            <p class="mb-2">
+              <span class="font-semibold text-purple-400" data-pt="Graduação:" data-en="Degree:">Graduação:</span>
+              <span data-pt="Engenharia Elétrica (Ênfase em computação)" data-en="Electrical Engineering (Computing emphasis)">
+                Engenharia Elétrica (Ênfase em computação)
+              </span>
+            </p>
+            <p class="mb-2">
+              <span class="font-semibold text-purple-400" data-pt="Cidade:" data-en="City:">Cidade:</span>
+              <span data-pt="Fortaleza, CE" data-en="Fortaleza, CE">Fortaleza, CE</span>
+            </p>
+          </div>
+          <div>
+            <p class="mb-2">
+              <span class="font-semibold text-purple-400" data-pt="Email:" data-en="Email:">Email:</span>
+              admin@alanmarquesrocha.com
+            </p>
+            <p class="mb-2">
+              <span class="font-semibold text-purple-400" data-pt="Freelance:" data-en="Freelance:">Freelance:</span>
+              <span data-pt="Disponível" data-en="Available">Disponível</span>
+            </p>
+            <p class="mb-2">
+              <span class="font-semibold text-purple-400" data-pt="LinkedIn:" data-en="LinkedIn:">LinkedIn:</span>
+              <a href="https://www.linkedin.com/in/alanmarquesrocha/" class="text-purple-300 hover:underline">linkedin.com/in/alanmarquesrocha</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <a
+            href="#"
+            class="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-full font-semibold transition inline-flex items-center text-lg"
+          >
+            <i class="fas fa-download mr-2"></i>
+            <span data-pt="Baixar CV" data-en="Download CV">Baixar CV</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Seção Habilidades -->
+<section id="skills" class="py-20 dark-mode:bg-gray-100">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" data-pt="Minhas Habilidades" data-en="My Skills">
+        Minhas Habilidades
+      </h2>
+      <div class="w-20 h-1 gradient-bg mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+      <!-- Habilidades Técnicas -->
+      <div>
+        <h3 class="text-2xl font-semibold mb-6 flex items-center">
+          <i class="fas fa-code mr-3 text-purple-400"></i>
+          <span data-pt="Técnicas" data-en="Techniques">Técnicas</span>
+        </h3>
+        <div class="space-y-5">
+          <!-- Python -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium">Python</span>
+              <span>95%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:95%"></div>
+            </div>
+          </div>
+
+          <!-- Machine Learning -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="Aprendizado de Máquina" data-en="Machine Learning">
+                Aprendizado de Máquina
+              </span>
+              <span>90%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:90%"></div>
+            </div>
+          </div>
+
+          <!-- Deep Learning -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="Aprendizado Profundo" data-en="Deep Learning">
+                Aprendizado Profundo
+              </span>
+              <span>90%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:90%"></div>
+            </div>
+          </div>
+
+          <!-- Prompt Engineering -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="Engenharia de Prompt" data-en"Prompt Engineering">Engenharia de Prompt</span>
+              <span>90%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:90%"></div>
+            </div>
+          </div>
+
+          <!-- SQL -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium">SQL</span>
+              <span>85%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:85%"></div>
+            </div>
+          </div>
+
+          <!-- Análise Exploratória de Dados -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="Análise Exploratória de Dados" data-en="Exploratory Data Analysis">
+                Análise Exploratória de Dados
+              </span>
+              <span>85%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:85%"></div>
+            </div>
+          </div>
+
+          <!-- Otimização de Hiperparámetros -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="Otimização de Hiperparâmetros" data-en="Hyperparameter Optimization">
+                Otimização de Hiperparâmetros
+              </span>
+              <span>75%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:75%"></div>
+            </div>
+          </div>
+
+          <!-- Modelos Estatísticos Clássicos -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="Modelos Estatísticos Clássicos" data-en="Classical Statistical Models">Modelos Estatísticos Clássicos</span>
+              <span>80%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:80%"></div>
+            </div>
+          </div>
+
+          <!-- Time-Series Analysis -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="Análise de Séries Temporais" data-en="Time-Series Analysis">Análise de Séries Temporais</span>
+              <span>75%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:75%"></div>
+            </div>
+          </div>
+
+          <!-- Processamento de Linguagem Natural -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="Processamento de Linguagem Natural" data-en="Natural Language Processing">
+                Processamento de Linguagem Natural
+              </span>
+              <span>85%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:85%"></div>
+            </div>
+          </div>
+
+          <!-- Visão Computacional -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="Visão Computacional" data-en="Computer Vision">
+                Visão Computacional
+              </span>
+              <span>80%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:80%"></div>
+            </div>
+          </div>
+
+          <!-- Explainable AI -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="IA Explicável (XAI)" data-en="Explainable AI (XAI)">IA Explicável (XAI)</span>
+              <span>70%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:70%"></div>
+            </div>
+          </div>
+
+          <!-- MLOps & Deploy -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium">MLOps & Deploy</span>
+              <span>65%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:65%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ferramentas e Tecnologias -->
+      <div>
+        <h3 class="text-2xl font-semibold mb-6 flex items-center">
+          <i class="fas fa-tools mr-3 text-purple-400"></i>
+          <span data-pt="Ferramentas" data-en="Tools">Ferramentas</span>
+        </h3>
+        <div class="flex flex-wrap gap-3">
+
+           <!-- ChatGPT -->
+           <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+               <i class="fas fa-robot mr-2 text-green-400"></i> ChatGPT
+           </span>
+
+           <!-- Deepseek´-->
+           <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+              <i class="fas fa-search mr-2 text-blue-400"></i> Deepseek
+           </span>
+
+           <!-- Manus IA -->
+           <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+              <i class="fas fa-book-open mr-2 text-purple-400"></i> Manus IA
+           </span>
+
+           <!-- Github -->
+           <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+              <i class="fab fa-github mr-2"></i> GitHub
+           </span>
+
+          <!-- Pandas -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+            <i class="fab fa-python mr-2 text-blue-400"></i> Pandas
+          </span>
+
+          <!-- Scikit-learn -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+            <i class="fas fa-brain mr-2 text-purple-400"></i> Scikit-learn
+          </span>
+
+          <!-- Keras -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+            <i class="fas fa-brain mr-2 text-purple-400"></i> Keras
+          </span>
+
+          <!-- TensorFlow -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+            <i class="fas fa-brain mr-2 text-purple-400"></i> TensorFlow
+          </span>
+
+          <!-- PyTorch -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+            <i class="fas fa-cogs mr-2 text-green-400"></i> PyTorch
+          </span>
+
+          <!-- Matplotlib -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+            <i class="fas fa-chart-line mr-2 text-yellow-400"></i> Matplotlib
+          </span>
+
+          <!-- Numpy -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+            <i class="fas fa-chart-line mr-2 text-yellow-400"></i> Numpy
+          </span>
+
+          <!-- PostgreSQL -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+            <i class="fas fa-database mr-2 text-red-400"></i> PostgreSQL
+          </span>
+
+          <!-- AWS -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+            <i class="fab fa-aws mr-2 text-orange-400"></i> AWS
+          </span>
+
+          <!-- BigQuery -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode:text-gray-800">
+            <i class="fab fa-google mr-2 text-blue-400"></i> BigQuery
+          </span>
+
+          <!-- Azure ML -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fas fa-cloud mr-2 text-blue-300"></i> Azure ML
+          </span>
+
+          <!-- OpenCV -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fas fa-camera mr-2 text-green-400"></i> OpenCV
+          </span>
+
+          <!-- NLTK -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fas fa-code mr-2 text-red-400"></i> NLTK
+          </span>
+
+          <!-- Transformers -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fas fa-hashtag mr-2 text-pink-400"></i> Transformers
+          </span>
+
+          <!-- Jupyter Notebook -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fas fa-laptop-code mr-2 text-blue-400"></i> Jupyter Notebook
+          </span>
+
+          <!-- Docker -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fab fa-docker mr-2 text-blue-600"></i> Docker
+          </span>
+
+          <!-- MLflow -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fas fa-clipboard-list mr-2 text-green-500"></i> MLflow
+          </span>
+
+          <!-- Weights & Biases -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fas fa-weight-hanging mr-2 text-pink-500"></i> Weights & Biases
+          </span>
+          
+          <!-- FastAPI -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fas fa-cloud mr-2 text-blue-300"></i> FastAPI
+          </span>
+
+          <!-- Streamlit -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fas fa-chart-bar mr-2 text-purple-600"></i> Streamlit
+          </span>
+          
+          <!-- MongoDB -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fas fa-database mr-2 text-blue-400"></i> MongoDB
+          </span>
+          
+          <!-- Snowflake -->
+          <span class="skill-badge px-4 py-2 bg-gray-800 rounded-full flex items-center dark-mode:bg-gray-300 dark-mode;text-gray-800">
+            <i class="fas fa-s snowflake mr-2 text-blue-300"></i> Snowflake
+          </span>
+          
+        </div>
+
+        <!-- Idiomas -->
+        <h3 class="text-2xl font-semibold mt-8 mb-6 flex items-center">
+          <i class="fas fa-language mr-3 text-purple-400"></i>
+          <span data-pt="Idiomas" data-en="Languages">Idiomas</span>
+        </h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="Português" data-en="Portuguese">Português</span>
+              <span data-pt="Nativo" data-en="Native">Nativo</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:100%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium, data-pt="Inglês" data-en="English">Inglês</span>
+              <span data-pt="Intermediário" data-en="Intermediate">Intermediário</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:60%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-medium" data-pt="Espanhol" data-en="Spanish">Espanhol</span>
+              <span data-pt="Intermediário" data-en="Intermediate">Intermediário</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 dark-mode:bg-gray-300">
+              <div class="gradient-bg h-2.5 rounded-full" style="width:60%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <!-- Seção Projetos -->
+    <section id="projects" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-pt="Meus Projetos" data-en="My Projects">Meus Projetos</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto"></div>
+                <p class="mt-6 text-gray-300 max-w-2xl mx-auto" data-pt="Explore alguns dos meus projetos mais recentes em 
+                IA e Ciência de Dados." data-en="Explore some of my latest projects in AI and Data Science.">
+                    Explore alguns dos meus projetos mais recentes em IA e Ciência de Dados.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projeto 1 -->
+                <div class="project-card rounded-xl p-6 border border-gray-700">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Sistema de Recomendação" 
+                             class="w-full h-48 object-cover rounded-lg">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" data-pt="Sistema de Recomendação" data-en="Recommendation System">Sistema de Recomendação</h3>
+                    <p class="text-gray-300 mb-4" data-pt="Sistema de recomendação personalizado para e-commerce usando técnicas de filtragem colaborativa e análise de sentimentos." data-en="Personalized recommendation system for e-commerce using collaborative filtering techniques and sentiment analysis.">
+                        Sistema de recomendação personalizado para e-commerce usando técnicas de filtragem colaborativa e análise de sentimentos.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">Python</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">Scikit-learn</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">NLP</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-purple-400 hover:text-purple-300 flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i> <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 2 -->
+                <div class="project-card rounded-xl p-6 border border-gray-700">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" 
+                             alt="Detecção de Fraudes" 
+                             class="w-full h-48 object-cover rounded-lg">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" data-pt="Detecção de Fraudes" data-en="Fraud Detection">Detecção de Fraudes</h3>
+                    <p class="text-gray-300 mb-4" data-pt="Modelo de machine learning para detecção de transações fraudulentas com 98% de precisão usando XGBoost e técnicas de balanceamento." data-en="Machine learning model for fraudulent transaction detection with 98% accuracy using XGBoost and balancing techniques.">
+                        Modelo de machine learning para detecção de transações fraudulentas com 98% de precisão usando XGBoost e técnicas de balanceamento.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">Python</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">XGBoost</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">SMOTE</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-purple-400 hover:text-purple-300 flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i> <span data-pt="Ver Projeto, data-en="View Project">Ver Projeto</span>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 3 -->
+                <div class="project-card rounded-xl p-6 border border-gray-700">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" 
+                             alt="Chatbot Inteligente" 
+                             class="w-full h-48 object-cover rounded-lg">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" data-pt="Chatbot Inteligente" data-en="Intelligent Chatbot">Chatbot Inteligente</h3>
+                    <p class="text-gray-300 mb-4" data-pt="Chatbot para atendimento ao cliente usando processamento de linguagem natural (NLP) e modelos transformers." data-en="Customer service chatbot using natural language processing (NLP) and transformer models.">
+                        Chatbot para atendimento ao cliente usando processamento de linguagem natural (NLP) e modelos transformers.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">Python</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">Transformers</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">Hugging Face</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-purple-400 hover:text-purple-300 flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i> <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 4 -->
+                <div class="project-card rounded-xl p-6 border border-gray-700">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" 
+                             alt="Análise de Sentimentos" 
+                             class="w-full h-48 object-cover rounded-lg">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" data-pt="Análise de Sentimentos" data-en="Sentiment Analysis">Análise de Sentimentos</h3>
+                    <p class="text-gray-300 mb-4" data-pt="Pipeline completo para análise de sentimentos em redes sociais usando BERT e técnicas de NLP avançadas." data-en="Complete pipeline for sentiment analysis on social media using BERT and advanced NLP techniques.">
+                        Pipeline completo para análise de sentimentos em redes sociais usando BERT e técnicas de NLP avançadas.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">Python</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">BERT</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">NLP</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-purple-400 hover:text-purple-300 flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i> <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 5 -->
+                <div class="project-card rounded-xl p-6 border border-gray-700">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" 
+                             alt="Previsão de Séries Temporais" 
+                             class="w-full h-48 object-cover rounded-lg">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" data-pt="Previsão de Séries Temporais" data-en="Time Series Forecasting">Previsão de Séries Temporais</h3>
+                    <p class="text-gray-300 mb-4" data-pt="Modelo de deep learning para previsão de demanda usando LSTM e técnicas avançadas de séries temporais." data-en="Deep learning model for demand forecasting using LSTM and advanced time series techniques.">
+                        Modelo de deep learning para previsão de demanda usando LSTM e técnicas avançadas de séries temporais.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">Python</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">TensorFlow</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">LSTM</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-purple-400 hover:text-purple-300 flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i> <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 6 -->
+                <div class="project-card rounded-xl p-6 border border-gray-700">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" 
+                             alt="Segmentação de Clientes" 
+                             class="w-full h-48 object-cover rounded-lg">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" data-pt="Segmentação de Clientes" data-en="Customer Segmentation">Segmentação de Clientes</h3>
+                    <p class="text-gray-300 mb-4" data-pt="Análise de clusters para segmentação de clientes usando K-means e técnicas não supervisionadas." data-en="Cluster analysis for customer segmentation using K-means and unsupervised techniques.">
+                        Análise de clusters para segmentação de clientes usando K-means e técnicas não supervisionadas.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">Python</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">Scikit-learn</span>
+                        <span class="text-xs px-2 py-1 bg-purple-900 bg-opacity-50 rounded">PCA</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-purple-400 hover:text-purple-300 flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i> <span data-pt="Ver Projeto" data-en="View Project">Ver Projeto</span>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="px-8 py-3 border border-purple-400 hover:bg-purple-900 hover:bg-opacity-30 rounded-full font-semibold transition inline-flex items-center">
+                    <i class="fas fa-plus mr-2"></i> <span data-pt="Ver Mais Projetos" data-en="View More Projects">Ver Mais Projetos</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-pt="Entre em Contato" data-en="Contact Me">Entre em Contato</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto"></div>
+                <p class="mt-6 text-gray-300 max-w-2xl mx-auto, data-pt="Estou disponível para oportunidades de trabalho, projetos freelance ou apenas para bater um papo sobre dados e IA." data-en="I'm available for job opportunities, freelance projects or just to chat about data and AI.">
+                    Estou disponível para oportunidades de trabalho, projetos freelance ou apenas para bater um papo sobre dados e IA.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <div class="bg-gray-800 rounded-xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6" data-pt="Envie uma Mensagem" data-en="Send a Message">Envie uma Mensagem</h3>
+                        <form>
+                            <div class="mb-6">
+                                <label for="name" class="block mb-2 font-medium" data-pt="Nome" data-en="Name">Nome:</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block mb-2 font-medium" data-pt="Email" data-en="Email">Email:</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block mb-2 font-medium" data-pt="Assunto" data-en="Subject">Assunto:</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block mb-2 font-medium" data-pt="Mensagem" data-en="Message">Mensagem:</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 gradient-bg hover:opacity-90 rounded-lg font-semibold transition" data-pt="Enviar Mensagem" data-en="Send Message">
+                                Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-gray-800 rounded-xl p-8 shadow-lg h-full">
+                        <h3 class="text-2xl font-semibold mb-6" data-pt="Informações de Contato" data-en="Contact Information">Informações de Contato</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-purple-900 bg-opacity-30 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-purple-400"></i>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-semibold mb-1" data-pt="Localização" data-en="Location">Localização</h4>
+                                    <p class="text-gray-300" data-pt="Fortaleza, CE, Brasil" data-en="Fortaleza, CE, Brazil">Fortaleza, CE, Brasil</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-purple-900 bg-opacity-30 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Email</h4>
+                                    <p class="text-gray-300">admin@alanmarquesrocha.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-purple-900 bg-opacity-30 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1" data-pt="Telefone" data-en="Phone">Telefone</h4>
+                                    <p class="text-gray-300">+55 85 99955-6680</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-purple-900 bg-opacity-30 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1" data-pt="Horário Comercial" data-en="Business Hours">Horário Comercial</h4>
+                                    <p class="text-gray-300" data-pt="Seg - Sex, 9:00 - 18:00" data-en="Mon - Fri, 9:00 - 18:00">Seg - Sex, 9:00 - 18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="font-semibold mb-4" data-pt="Redes Sociais" data-en="Social Media">Redes Sociais</h4>
+                            <div class="flex space-x-4">
+                                <!-- LinkedIn -->
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-purple-600 rounded-full transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+
+                                <!-- Github -->
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-purple-600 rounded-full transition">
+                                    <i class="fab fa-github"></i>
+                                </a>
+
+                                <!-- Instagram -->
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-purple-600 rounded-full transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+
+                                <!-- Medium -->
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-purple-600 rounded-full transition">
+                                    <i class="fab fa-medium"></i>
+                                </a>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="py-8 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-robot text-xl text-purple-400"></i>
+                        <span class="text-lg font-bold">Alan Rocha | Engenheiro e Cientista de Dados</span>
+                    </div>
+                    <p class="text-gray-400 mt-2" data-pt="Transformando dados em soluções inteligentes." data-en="Transforming data into intelligent solutions.">Transformando dados em soluções inteligentes.</p>
+                </div>
+                <div class="text-gray-400 text-sm">
+                    &copy; <span data-pt="2025 Alan Rocha | Todos os direitos reservados." data-en="2025 Alan Rocha | All rights reserved.">2025 Alan Rocha | Todos os direitos reservados.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <div id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Efeito de digitação para o nome
+        function typeWriterName() {
+            const nameElement = document.getElementById('dynamicName');
+            const nameText = currentLanguage === 'pt' ? nameElement.getAttribute('data-pt') : nameElement.getAttribute('data-en');
+            let i = 0;
+            let isDeleting = false;
+            let typingSpeed = 150; // velocidade de digitação
+            
+            function type() {
+                if (i <= nameText.length && !isDeleting) {
+                    nameElement.textContent = nameText.substring(0, i);
+                    nameElement.classList.add('typing-animation');
+                    i++;
+                    setTimeout(type, typingSpeed);
+                } else if (i > 0 && isDeleting) {
+                    nameElement.textContent = nameText.substring(0, i-1);
+                    i--;
+                    setTimeout(type, typingSpeed / 2);
+                } else {
+                    isDeleting = !isDeleting;
+                    if (!isDeleting) {
+                        // Adiciona apenas o cursor piscando quando terminar de deletar
+                        nameElement.classList.remove('typing-animation');
+                        nameElement.classList.add('blink-animation');
+                        setTimeout(() => {
+                            nameElement.classList.remove('blink-animation');
+                            setTimeout(type, 2000); // espera 2 segundos antes de começar a digitar novamente
+                        }, 2000);
+                    } else {
+                        setTimeout(type, 1000); // espera 1 segundo antes de começar a deletar
+                    }
+                }
+            }
+            
+            // Inicia o efeito
+            type();
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle (would need implementation)
+        const mobileMenuButton = document.querySelector('.md\\:hidden');
+        mobileMenuButton.addEventListener('click', () => {
+            // Implement mobile menu toggle functionality here
+            console.log('Mobile menu clicked');
+        });
+        
+        // Animation for skill bars on scroll
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.w-full.bg-gray-700 div');
+            
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        };
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'skills') {
+                        animateSkillBars();
+                    }
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Language switcher
+        const languageBtn = document.getElementById('languageBtn');
+        const currentLanguageSpan = document.getElementById('currentLanguage');
+        let currentLanguage = 'pt';
+        
+        languageBtn.addEventListener('click', () => {
+            // Toggle between languages
+            currentLanguage = currentLanguage === 'pt' ? 'en' : 'pt';
+            currentLanguageSpan.textContent = currentLanguage === 'pt' ? 'PT' : 'EN';
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-pt]').forEach(element => {
+                if (currentLanguage === 'pt') {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = element.getAttribute('data-pt');
+                    } else {
+                        element.textContent = element.getAttribute('data-pt');
+                    }
+                } else {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = element.getAttribute('data-en');
+                    } else {
+                        element.textContent = element.getAttribute('data-en');
+                    }
+                }
+            });
+            
+            // Restart the typewriter animation for the name
+            const nameElement = document.getElementById('dynamicName');
+            nameElement.textContent = '';
+            nameElement.classList.remove('typing-animation', 'blink-animation');
+            setTimeout(typeWriterName, 500);
+        });
+
+        // Inicia o efeito de digitação quando a página carrega
+        document.addEventListener('DOMContentLoaded', () => {
+            typeWriterName();
+        });
+    </script>
+</body>
+</html>
