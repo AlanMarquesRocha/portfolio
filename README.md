@@ -19,7 +19,7 @@ Acesse a página ao vivo (em breve):
 - **Contato**: formulário de mensagens e informações de localização, e-mail e redes sociais.
 - **Dark/Light Mode** e **Switcher de Idioma** (PT-Br / EN).
 
-## 🛠 Tecnologias
+## 🛠 Tecnologias utilizadas
 
 - **HTML5 & CSS3**  
 - **Tailwind CSS**  
