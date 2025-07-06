@@ -2,9 +2,9 @@
 
 > Transformando dados em insights e criando soluções inteligentes com IA.
 
-## 📄 Descrição
+## 📄 Descrição do Projeto
 
-Este repositório contém o código-fonte do site de portfólio pessoal de **Alan Rocha** — Engenheiro de IA e Cientista de Dados. Desenvolvido com **Tailwind CSS**, JavaScript puro e animações de digitação, o projeto exibe informações sobre formação acadêmica, habilidades técnicas, projetos e formas de contato de maneira elegante e responsiva.
+Este repositório contém o código-fonte do site de portfólio pessoal de **Alan Rocha** — Engenheiro de IA e Cientista de Dados. Desenvolvido com **Tailwind CSS**, **JavaScript** puro e animações de digitação, o projeto exibe informações sobre formação acadêmica, habilidades técnicas, projetos e formas de contato de maneira elegante e responsiva.
 
 ## 🔍 Demonstração
 
@@ -27,7 +27,7 @@ Acesse a página ao vivo (em breve):
 - **Font Awesome** para ícones  
 - **Animações**: Typewriter e fade-in com Intersection Observer  
 
-## Site em PT-Br  
+## Site em PortuguÊs - PT-Br  
 
 ![image](https://github.com/user-attachments/assets/fc5104b6-ce8e-4954-ad9f-fb912953f08b)
 ![image](https://github.com/user-attachments/assets/0d5b4b3e-a32c-4266-9b08-5e09c1283100)
@@ -36,7 +36,7 @@ Acesse a página ao vivo (em breve):
 ![image](https://github.com/user-attachments/assets/e4abce40-2211-4865-b0e0-d569c8ef5204)
 
 ---
-## Site em EN-Us
+## Site em Inglês - EN-Us
 
 ![image](https://github.com/user-attachments/assets/515d6f55-2b89-438d-8d49-91362f8b51a7)
 ![image](https://github.com/user-attachments/assets/6cf43991-c220-4aa1-8011-b24f98db7659)
